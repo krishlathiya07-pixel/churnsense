@@ -2,13 +2,8 @@
 # MLflow and notebooks
 notebooks/mlflow.db
 notebooks/mlruns/
-notebooks/plots/*.png
-notebooks/.ipynb_checkpoints/
-
-# Models
+notebooks/plots/
 models/*.pkl
-
-# Data
 data/raw/*.csv
 
 # Python
@@ -19,4 +14,4 @@ venv/
 *.egg-info/
 .DS_Store
 .ipynb_checkpoints/
-"@ | Out-File -FilePath .gitignore -Encoding UTF8
+"@ | Set-Content -Path .gitignore -Encoding UTF8

@@ -115,8 +115,9 @@ The model doesn’t just predict — it explains:
 ```
 churnsense/
 │
+├── streamlit_app.py
 ├── app/
-│   ├── streamlit_app.py
+│   
 │   └── api.py
 │
 ├── models/

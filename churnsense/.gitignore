@@ -1,1 +1,7 @@
 data/
+mlruns/
+mlflow.db
+notebooks/plots/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

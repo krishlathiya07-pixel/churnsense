@@ -1,40 +1,21 @@
-# app/streamlit_app.py
-import shap
-shap.initjs()
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
-
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-model_path = os.path.join(BASE_DIR, "models", "best_model.pkl")
-scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
-encoder_path = os.path.join(BASE_DIR, "models", "encoder.pkl")
-# -----------------------------
-# LOAD MODELS
-# -----------------------------
-# app/streamlit_app.py
-
 from pathlib import Path
 import pickle
-import streamlit as st
+import shap
 
+# -----------------------------
+# LOAD MODELS (SAFE FOR HF)
+# -----------------------------
 @st.cache_resource
 def load_models():
-    BASE_DIR = Path(__file__).resolve().parents[1]
-    MODEL_DIR = BASE_DIR / "models"
+    base_dir = Path(__file__).resolve().parents[1]
+    model_dir = base_dir / "models"
 
-    with open(MODEL_DIR / "best_model.pkl", "rb") as f:
-        model = pickle.load(f)
-
-    with open(MODEL_DIR / "scaler.pkl", "rb") as f:
-        scaler = pickle.load(f)
-
-    with open(MODEL_DIR / "encoder.pkl", "rb") as f:
-        encoder = pickle.load(f)
+    model = pickle.load(open(model_dir / "best_model.pkl", "rb"))
+    scaler = pickle.load(open(model_dir / "scaler.pkl", "rb"))
+    encoder = pickle.load(open(model_dir / "encoder.pkl", "rb"))
 
     return model, scaler, encoder
 
@@ -71,10 +52,10 @@ def user_input():
         "StreamingMovies": st.sidebar.selectbox("Streaming Movies", ["Yes", "No", "No internet service"]),
         "Contract": st.sidebar.selectbox("Contract", ["Month-to-month", "One year", "Two year"]),
         "PaperlessBilling": st.sidebar.selectbox("Paperless Billing", ["Yes", "No"]),
-        "PaymentMethod": st.sidebar.selectbox("Payment Method", 
-                                             ["Electronic check", "Mailed check", 
-                                              "Bank transfer (automatic)", 
-                                              "Credit card (automatic)"]),
+        "PaymentMethod": st.sidebar.selectbox(
+            "Payment Method",
+            ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"]
+        ),
         "MonthlyCharges": st.sidebar.slider("Monthly Charges", 0.0, 150.0, 70.0),
         "TotalCharges": st.sidebar.slider("Total Charges", 0.0, 10000.0, 2000.0)
     }
@@ -83,22 +64,22 @@ def user_input():
 input_df = user_input()
 
 # -----------------------------
-# PREPROCESS INPUT
+# PREPROCESS
 # -----------------------------
 def preprocess_input(df):
-    categorical_cols = df.select_dtypes(include=['object']).columns
+    categorical_cols = df.select_dtypes(include=["object"]).columns
     numerical_cols = df.select_dtypes(include=np.number).columns
 
-    # Encode categorical
     encoded = pd.DataFrame(
         encoder.transform(df[categorical_cols]),
         columns=encoder.get_feature_names_out(categorical_cols)
     )
 
-    # Combine
-    final_df = pd.concat([df[numerical_cols].reset_index(drop=True), encoded], axis=1)
+    final_df = pd.concat(
+        [df[numerical_cols].reset_index(drop=True), encoded],
+        axis=1
+    )
 
-    # Scale numerical
     final_df[numerical_cols] = scaler.transform(final_df[numerical_cols])
 
     return final_df
@@ -113,7 +94,7 @@ if st.button("🔍 Predict Churn"):
     prob = model.predict_proba(processed_input)[0][1]
     prediction = model.predict(processed_input)[0]
 
-    # Risk label
+    # Risk level
     if prob > 0.7:
         risk = "🔴 High Risk"
     elif prob > 0.4:
@@ -126,9 +107,9 @@ if st.button("🔍 Predict Churn"):
     st.write(f"Risk Level: {risk}")
 
     # -----------------------------
-    # SHAP EXPLANATION
+    # SHAP EXPLANATION (SAFE)
     # -----------------------------
-    explainer = shap.Explainer(model, processed_input)
+    explainer = shap.Explainer(model)
     shap_values = explainer(processed_input)
 
     shap_vals = shap_values[0].values

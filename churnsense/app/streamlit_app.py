@@ -6,7 +6,13 @@ import pandas as pd
 import numpy as np
 import pickle
 
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+model_path = os.path.join(BASE_DIR, "models", "best_model.pkl")
+scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
+encoder_path = os.path.join(BASE_DIR, "models", "encoder.pkl")
 # -----------------------------
 # LOAD MODELS
 # -----------------------------

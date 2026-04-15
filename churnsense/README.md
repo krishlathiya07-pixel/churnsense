@@ -3,9 +3,9 @@ title: ChurnSense
 emoji: 🚀
 colorFrom: blue
 colorTo: purple
-python_version: "3.11"
 sdk: streamlit
 sdk_version: "1.36.0"
+python_version: "3.11"
 app_file: streamlit_app.py
 pinned: false
 ---
@@ -18,7 +18,7 @@ pinned: false
 
 ## 🌐 Live Demo
 
-👉 https://your-username-churnsense.hf.space
+👉 https://huggingface.co/spaces/ihere04u/churnsense
 
 ---
 
@@ -31,9 +31,9 @@ Most companies react **after** the customer leaves.
 
 This allows businesses to:
 
-* Reduce revenue loss 💸
-* Target high-risk customers 🎯
-* Improve retention strategies 📈
+- Reduce revenue loss 💸
+- Target high-risk customers 🎯
+- Improve retention strategies 📈
 
 ---
 
@@ -48,23 +48,23 @@ This allows businesses to:
 
 ## 🧱 Tech Stack
 
-* 🐍 Python
-* 📊 pandas, numpy
-* 🤖 scikit-learn, XGBoost, LightGBM
-* 📉 SHAP (Explainability)
-* 🌐 Streamlit (Frontend UI)
-* ⚡ FastAPI (Backend API)
-* 📦 MLflow (Experiment tracking)
-* 🚀 HuggingFace Spaces (Deployment)
-* 🗂 GitHub (Version control)
+- 🐍 Python
+- 📊 pandas, numpy
+- 🤖 scikit-learn, XGBoost, LightGBM
+- 📉 SHAP (Explainability)
+- 🌐 Streamlit (Frontend UI)
+- ⚡ FastAPI (Backend API)
+- 📦 MLflow (Experiment tracking)
+- 🚀 HuggingFace Spaces (Deployment)
+- 🗂 GitHub (Version control)
 
 ---
 
 ## 📊 Dataset
 
-* IBM Telco Customer Churn Dataset
-* 7,043 rows
-* Binary classification (Churn: Yes / No)
+- IBM Telco Customer Churn Dataset
+- 7,043 rows
+- Binary classification (Churn: Yes / No)
 
 ---
 
@@ -83,30 +83,30 @@ This allows businesses to:
 
 ## 🔍 Key Insights (EDA)
 
-* Customers with **month-to-month contracts** churn more
-* **High monthly charges** → higher churn probability
-* Lack of **tech support / online security** increases churn
-* Long-term customers are more loyal
+- Customers with **month-to-month contracts** churn more
+- **High monthly charges** → higher churn probability
+- Lack of **tech support / online security** increases churn
+- Long-term customers are more loyal
 
 ---
 
 ## 🧠 Explainability (SHAP)
 
-The model doesn’t just predict — it explains:
+The model doesn't just predict — it explains:
 
-* Which features increase churn risk
-* Which features reduce churn risk
-* Top 3 reasons for each prediction
+- Which features increase churn risk
+- Which features reduce churn risk
+- Top 3 reasons for each prediction
 
 ---
 
 ## 🖥️ App Features
 
-* 🎛 Interactive input form
-* 📊 Churn probability display
-* 🚨 Risk classification (Low / Medium / High)
-* 🔎 Top churn reasons
-* 💡 Actionable suggestions
+- 🎛 Interactive input form
+- 📊 Churn probability display
+- 🚨 Risk classification (Low / Medium / High)
+- 🔎 Top churn reasons
+- 💡 Actionable suggestions
 
 ---
 
@@ -117,7 +117,6 @@ churnsense/
 │
 ├── streamlit_app.py
 ├── app/
-│   
 │   └── api.py
 │
 ├── models/
@@ -136,10 +135,10 @@ churnsense/
 ## ⚡ How to Run Locally
 
 ```bash
-git clone https://github.com/your-username/churnsense.git
+git clone https://github.com/krishlathiya07-pixel/churnsense.git
 cd churnsense
 pip install -r requirements.txt
-streamlit run app/streamlit_app.py
+streamlit run streamlit_app.py
 ```
 
 ---
@@ -154,7 +153,7 @@ uvicorn app.api:app --reload
 
 Test endpoint:
 
-```bash
+```
 http://127.0.0.1:8000/docs
 ```
 
@@ -162,41 +161,41 @@ http://127.0.0.1:8000/docs
 
 ## 🚀 Deployment
 
-Deployed using HuggingFace Spaces with Streamlit.
+Deployed using HuggingFace Spaces with Streamlit SDK.
 
 ---
 
 ## 🧠 What I Learned
 
-* Building end-to-end ML systems
-* Handling real-world data issues
-* Model explainability (SHAP)
-* API development with FastAPI
-* Deployment and production debugging
+- Building end-to-end ML systems
+- Handling real-world data issues
+- Model explainability with SHAP
+- API development with FastAPI
+- Deployment and production debugging
 
 ---
 
 ## 📸 Screenshots
 
-(Add screenshots here after deployment)
+*(Add screenshots here after deployment)*
 
 ---
 
 ## 📌 Future Improvements
 
-* Real-time data integration
-* Advanced feature engineering
-* Model retraining pipeline
-* Business dashboard
+- Real-time data integration
+- Advanced feature engineering
+- Model retraining pipeline
+- Business dashboard
 
 ---
 
 ## 🤝 Connect
 
-If you’re working on AI/ML or building something interesting, let’s connect.
+If you're working on AI/ML or building something interesting, let's connect on [LinkedIn](https://linkedin.com/in/krishlathiya).
 
 ---
 
 ## ⭐ If you like this project
 
-Give it a star ⭐ on GitHub
+Give it a star ⭐ on GitHub!
